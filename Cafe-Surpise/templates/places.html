@@ -1,0 +1,57 @@
+{% include "header.html" %}
+
+{% for post in cafes %}
+        <section class="page-section about-heading">
+            <div class="container">
+                <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{{post.img_url}}" alt="..." />
+                <div class="about-heading-content">
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-10 mx-auto">
+                            <div class="bg-faded rounded p-5">
+                                <h2 class="section-heading mb-4">
+                                    <span class="section-heading-upper">
+                                        {% if post.has_wifi==1 %}
+                                        <i class="fa fa-fw fa-wifi" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-fw fa-wifi" aria-hidden="true" style="color:white"></i>
+                                        {% endif %}
+
+                                        {% if post.has_sockets==1 %}
+                                        <i class="fa fa-fw fa-plug" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-fw fa-plug" aria-hidden="true" style="color:white"></i>
+                                        {% endif %}
+
+                                        {% if post.has_toilet==1 %}
+                                        <i class="fa fa-fw fa-solid fa-droplet" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-fw fa-solid fa-droplet" aria-hidden="true" style="color:white"></i>
+                                        {% endif %}
+
+                                        {% if post.can_take_calls==1 %}
+                                        <i class="fa fa-fw fa-phone" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-fw fa-phone" aria-hidden="true" style="color:white"></i>
+                                        {% endif %}
+
+                                    </span>
+                                    <a class="section-heading-lower" style="color:black" href="{{post.map_url}}"><b>{{post.name}}</b></a>
+                                </h2>
+                                <p><b>Location</b>: {{post.location}}<br>
+                                    <b>Seats</b>: {{post.seats}}<br>
+                                    <b>Price</b>: {{post.coffee_price}}</p>
+                                <p class="mb-0">
+                                    {{post.description}}
+                                </p>
+                                <p>
+                                    <br>
+                                <a class="btn btn-primary float-right" href="{{url_for('edit', post_id=post.id)}}">Edit</a> <a class="btn btn-primary float-right" href="{{url_for('delete', post_id=post.id)}}">Delete</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endfor %}
+{% include "footer.html" %}
