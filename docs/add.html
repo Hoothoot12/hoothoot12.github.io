@@ -1,0 +1,37 @@
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+
+
+        <section class="page-section">
+            <div class="container">
+                <div class="product-item">
+                    <div class="product-item-title d-flex">
+                        <div class="bg-faded p-5 d-flex me-auto rounded">
+                            <h2 class="section-heading mb-0">
+                                <span class="section-heading-upper">Add</span>
+                                <span class="section-heading-lower">New Cafe</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="product-item-form">
+                          {{ ckeditor.load() }}
+                          {{ ckeditor.config(name='description') }}
+                          {{ wtf.quick_form(form, novalidate=True) }}
+                          {{ form.hidden_tag() }}
+                    </div>
+                    <!--<img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{url_for('static', filename='assets/img/products-02.jpg')}}" alt="..." />-->
+                    <div class="product-item-description d-flex ms-auto">
+                        <div class="bg-faded p-5 rounded">
+                            <p class="mb-0">When you finish filling the form, dont forget to check the cafe in places section after you press submit button or click this link <a class="mb-0" style="color: red" href="{{url_for('place')}}">Places</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% include "footer.html" %}
+
+{% endblock %}
