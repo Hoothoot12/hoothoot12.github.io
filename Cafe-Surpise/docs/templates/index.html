@@ -1,0 +1,81 @@
+{% include "header.html" %}
+
+        <section class="page-section clearfix">
+            <div class="container">
+                <div class="intro">
+                    {% if shop =='' %}
+                    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{url_for('static',filename='assets/img/intro.jpg')}}" alt="..." />
+                    {% else %}
+                    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{shop.img_url}}" alt="..." />
+                    {% endif %}
+                    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                        <h2 class="section-heading mb-4">
+                            {% if shop =='' %}
+                            <span class="section-heading-upper">Fresh Coffee</span>
+                            {% else %}
+                            <span class="section-heading-upper">
+
+                                {% if shop.has_wifi==1 %}
+                                <i class="fa fa-fw fa-wifi" aria-hidden="true"></i>
+                                {% else %}
+                                <i class="fa fa-fw fa-wifi" aria-hidden="true" style="color:white"></i>
+                                {% endif %}
+
+                                {% if shop.has_sockets==1 %}
+                                <i class="fa fa-fw fa-plug" aria-hidden="true"></i>
+                                {% else %}
+                                <i class="fa fa-fw fa-plug" aria-hidden="true" style="color:white"></i>
+                                {% endif %}
+
+                                {% if shop.has_toilet==1 %}
+                                <i class="fa fa-fw fa-solid fa-droplet" aria-hidden="true"></i>
+                                {% else %}
+                                <i class="fa fa-fw fa-solid fa-droplet" aria-hidden="true" style="color:white"></i>
+                                {% endif %}
+
+                                {% if shop.can_take_calls==1 %}
+                                <i class="fa fa-fw fa-phone" aria-hidden="true"></i>
+                                {% else %}
+                                <i class="fa fa-fw fa-phone" aria-hidden="true" style="color:white"></i>
+                                {% endif %}
+
+                            </span>
+                            {% endif %}
+                            {% if shop =='' %}
+                            <span class="section-heading-lower">Worth Drinking</span>
+                            {% else %}
+                            <a class="section-heading-lower" style="color:black" href="{{shop.map_url}}"><b>{{shop.name}}</b></a>
+                            {% endif %}
+                        </h2>
+                        {% if shop =='' %}
+                        <p class="mb-3">Start your mornings off right with a delicious cup of coffee that will awaken your senses and set the tone for a productive day ahead. A visit to your nearby cafe promises a delightful experience, where expert baristas craft the perfect cup, tailored to your preferences.</p>
+                        {% else %}
+                        <p class="mb-3">{{shop.description}}</p>
+                        {% endif %}
+                        <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="{{url_for('surpise')}}">Surpise me!</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page-section cta">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <div class="cta-inner bg-faded text-center rounded">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">Please read</span>
+                                <span class="section-heading-lower">Signs</span>
+                            </h2>
+                            <p class="mb-0">
+                                <li>Wifi  <i class="fa fa-fw fa-wifi" aria-hidden="true"></i>: available   <i class="fa fa-fw fa-wifi" aria-hidden="true" style="color:white"></i>: not available</li>
+                                <li>Socket  <i class="fa fa-fw fa-plug" aria-hidden="true"></i>: available    <i class="fa fa-fw fa-plug" aria-hidden="true" style="color:white"></i>: not available</li>
+                                <li>Toilet  <i class="fa fa-fw fa-solid fa-droplet" aria-hidden="true"></i>: available <i class="fa fa-fw fa-solid fa-droplet" aria-hidden="true" style="color:white"></i>: not available</li>
+                                <li>Call  <i class="fa fa-fw fa-phone" aria-hidden="true"></i>: available <i class="fa fa-fw fa-phone" aria-hidden="true" style="color:white"></i>: not available</li>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% include "footer.html" %}
